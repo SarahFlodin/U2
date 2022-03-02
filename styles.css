@@ -1,27 +1,46 @@
+html {
+    max-width: 100vw;
+    padding: 30px;
+    background-image: url(dessert.background.png);
+    background-size: cover;
+}
 body {
     margin: 0 auto;
-    max-width: 600px;
-    font-family: Courier;
+    max-width: 90vw;
+    font-family:'Shrikhand';
+    background: powderblue;
+    
   }
   
   h1 {
     text-align: center;
-  }
+    color: #fcedd8;
+    font-size: 50pt;
+    text-shadow: 5px 5px 0px #eb452b, 
+                10px 10px 0px #efa032, 
+                15px 15px 0px #46b59b, 
+                20px 20px 0px #017e7f, 
+                25px 25px 0px #052939, 
+                30px 30px 0px #c11a2b, 
+                35px 35px 0px #c11a2b, 
+                40px 40px 0px #c11a2b, 
+                45px 45px 0px #c11a2b;
+}
   
   #add-dessert-form {
     display: grid;
-    grid-template-columns: 1fr 1fr 100px 60px;
+    grid-template-columns: repeat(6, 1fr);
     gap: 10px;
     margin-bottom: 15px;
     padding-bottom: 15px;
-    border-bottom: 1px solid #aaa;
+    border-bottom: 4px dotted blue;
   }
   
   #filters {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
     margin-bottom: 15px;
-    gap: 15px;
+    gap: 8.3px;
   }
   
   #filter-by-flavor,
@@ -29,35 +48,36 @@ body {
   #fileter-by-shape,
   #filter-by-glutenfree {
     display: grid;
-    grid-template-columns: 1fr 1fr;
     gap: 5px;
   }
   
   #headers {
-    padding: 10px 20px;
-    border-bottom: 1px solid #aaa;
-    background: beige;
+    padding: 10px 40px;
+    border: 4px dotted blue;
+    background: pink;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
   }
   
   #desserts {
-    background: beige;
+    background:pink;
     padding: 10px;
   }
   
   .dessert {
-    padding: 10px 10px;
+    padding: 10px 15px 10px 30px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
   }
   
   .dessert div {
-    /* Center vertically */
     display: flex;
     align-items: center;
   }
   
   .dessert:nth-child(odd) {
-    background: #fffff0;
+    background: rgb(187, 255, 187);
+  }
+  .dessert:nth-child(even) {
+    background: rgb(221, 192, 248);
   }
