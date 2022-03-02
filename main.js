@@ -102,7 +102,6 @@ function renderDesserts(desserts) {
     let dessertsElement = document.getElementById("desserts");
     dessertsElement.innerHTML = "";
 
-
 //Gå igenom alla desserter och lägger in deras HTML
 for (let dessert of desserts) {
     let dessertElement = renderDessert(dessert);
@@ -138,7 +137,6 @@ function onAddDessertSubmit(event) {
     }
 
     let dessert = createNewDessert(name, flavor, kalories, shape, glutenfree);
-
     //Kalkulera nya id:t till desserten
     dessert.id = database[database.length - 1].id + 1;
 
@@ -165,7 +163,6 @@ function onRemoveDessertClick(event) {
     if (window.confirm("Do you really want to remove this dessert?")) {
         removeDessertbyId(database, id);
     }
-
     // Återskapar sidan utan den borttagna desserten
     renderDesserts(database);
 }
@@ -200,6 +197,7 @@ function onFilterByKaloriesSubmit (event) {
     //Återskapa desserterna
     renderDesserts(desserts);
 }
+
 //Filtrera desserter genom form "shape"
 function onFilterByShapesSubmit (event) {
     event.preventDefault();
@@ -230,6 +228,7 @@ function onShowAllClick() {
     document.getElementById("filter-glutenfree").value = "";
     renderDesserts(database);
 }
+
 // Sätter filter på värden och visa alla värden
 function setFilterDessertHandlers() {
     let flavorForm = document.getElementById("filter-by-flavor");
