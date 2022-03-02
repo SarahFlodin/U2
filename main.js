@@ -80,7 +80,7 @@ function getDessertsByFlavor (desserts, glutenfree) {
     return dessertsByGlutenfree;
 }
 
-//Skapar en dessert objekt till HTML element
+//Skickar en dessert objekt till HTML element
 function renderDessert(dessert) {
     let div = document.createElement("div");
     div.classList.add("dessert");
@@ -95,4 +95,86 @@ function renderDessert(dessert) {
         `;
 
     return div;
+}
+
+// Skickar en array av desserter till HTML
+function renderDesserts(desserts) {
+    let dessertsElement = document.getElementById("desserts");
+    dessertsElement.innerHTML = "";
+
+
+//Gå igenom alla desserter och lägger in deras HTML
+for (let dessert of desserts) {
+    let dessertElement = renderDessert(dessert);
+    dessertsElement.appendChild(dessertElement)
+}
+// Lägg till ta bort funktionen för våra desserter
+    setRemoveDessertHandlers();
+}
+
+// När formuläret är ifyllt och inskickat
+function onAddDessertSubmit(event) {
+    // Hindrar forumuläret att uppdatera sidan
+    event.preventDefault();
+
+    let name = document.getElementById("dessert").value;
+    let flavor = document.getElementById("flavor").value;
+    let kalories = Number(document.getElementById("kalories").value);
+    let shape = document.getElementById("shape").value;
+    let glutenfree = document.getElementById("glutenfree").value;
+
+
+    //Varna om alla rutor ej är ifyllda
+    if (name == ""){
+        alert("You have to fill in the name of the dessert")
+    } else if (flavor == ""){
+        alert("You have to fill in the flavor of the dessert")
+    } else if (kalories == ""){
+        alert("You have to fill in the amount kalories in the dessert")
+    } else if (shape == "");{
+        alert("You have to fill in the shape of the dessert")
+    }else if (glutenfree == ""){
+        alert("You have to fill in if the dessert are glutenfree")
+    }
+
+    let dessert = createNewDessert(name, flavor, kalories, shape, glutenfree);
+
+    //Kalkulera nya id:t till desserten
+    dessert.id = database[database.length - 1].id + 1;
+
+    addDessertToDatabase(database, dessert)
+    renderDesserts(database);
+
+    // Tömmer alla formulärs fält (reset)
+    let form = document.getElementById("add-dessert-form")
+    form.reset();
+}
+
+// Lägger till "click" eventet till knappen
+function setAddDessertClick(event) {
+    let form = document.getElementById("add-dessert-form");
+    form.addEventListener("submit", onAddDessertSubmit);
+}
+
+// När användaren klickar på remove
+function onRemoveDessertClick(event) {
+    let button = event.target;
+    let id = button.parentElement.id;
+
+    // Använder globala variabeln "database" och konfimerar att jag ska ta bort
+    if (window.confirm("Do you really want to remove this dessert?")) {
+        removeDesserts(database);
+    }
+
+    // Återskapar sidan utan den borttagna desserten
+    renderDesserts(database);
+}
+
+//Adderar "click" eventet till alla remove knappar
+function setRemoveDessertHandlers() {
+    let buttons = document.querySelectorAll(".dessert button");
+
+    for (let button of buttons) {
+        button.addEventListener("click", onRemoveDessertClick)
+    }
 }
