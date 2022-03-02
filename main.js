@@ -127,11 +127,11 @@ function onAddDessertSubmit(event) {
     //Varna om alla rutor ej är ifyllda
     if (name == ""){
         alert("You have to fill in the name of the dessert")
-    } else if (flavor == ""){
+    }else if (flavor == ""){
         alert("You have to fill in the flavor of the dessert")
-    } else if (kalories == ""){
+    }else if (kalories == ""){
         alert("You have to fill in the amount kalories in the dessert")
-    } else if (shape == "");{
+    }else if (shape == ""){
         alert("You have to fill in the shape of the dessert")
     }else if (glutenfree == ""){
         alert("You have to fill in if the dessert are glutenfree")
@@ -178,3 +178,74 @@ function setRemoveDessertHandlers() {
         button.addEventListener("click", onRemoveDessertClick)
     }
 }
+
+//Filtrera desserter genom smak "flavor"
+function onFilterByFlavorSubmit (event) {
+    event.preventDefault();
+    // Vilken smak
+    let flavor = document.getElementById("filter-flavor").value;
+    // Hämta desserter genom smak
+    let desserts = getDessertsByFlavor(database, flavor);
+    //Återskapa desserterna
+    renderDesserts(desserts);
+}
+
+//Filtrera desserter genom kalorier
+function onFilterByKaloriesSubmit (event) {
+    event.preventDefault();
+    // Hur många kalorier
+    let kalories = document.getElementById("filter-kalorier").value;
+    // Hämta desserter genom smak
+    let desserts = getDessertsByKalories(database, kalories);
+    //Återskapa desserterna
+    renderDesserts(desserts);
+}
+//Filtrera desserter genom form "shape"
+function onFilterByShapesSubmit (event) {
+    event.preventDefault();
+    // Vilken form?
+    let shape = document.getElementById("filter-shape").value;
+    // Hämta desserter genom smak
+    let desserts = getDessertsByFlavor(database, shape);
+    //Återskapa desserterna
+    renderDesserts(desserts);
+}
+
+//Filtrera desserter genom glutenfree
+function onFilterByGlutenfreeSubmit (event) {
+    event.preventDefault();
+    // Är de glutenfria yes/no
+    let glutenfree = document.getElementById("filter-glutenfree").value;
+    // Hämta desserter genom om dem är glutenfria yes/no
+    let desserts = getDessertsByGlutenfree(database, glutenfree);
+    //Återskapa desserterna
+    renderDesserts(desserts);
+}
+
+//Visar alla värden
+function onShowAllClick() {
+    document.getElementById("filter-flavor").value = "";
+    document.getElementById("filter-kalories").value = "";
+    document.getElementById("filter-shape").value = "";
+    document.getElementById("filter-glutenfree").value = "";
+    renderDesserts(database);
+}
+// Sätter filter på värden och visa alla värden
+function setFilterDessertHandlers() {
+    let flavorForm = document.getElementById("filter-by-flavor");
+    let kaloriesForm = document.getElementById("filter-by-kalories");
+    let shapeForm = document.getElementById("filter-by-shape");
+    let glutenfreeForm = document.getElementById("filter-by-glutenfree");
+    let showAll = document.getElementById("show-all");
+// Det som ska hända när man submittar värdet
+    flavorForm.addEventListener("submit", onFilterByFlavorSubmit);
+    kaloriesForm.addEventListener("submit", onFilterByKaloriesSubmit);
+    shapeForm.addEventListener("submit", onFilterByShapesSubmit);
+    glutenfreeForm.addEventListener("submit", onFilterByGlutenfreeSubmit);
+    showAll.addEventListener("submit", onShowAllClick);
+}
+
+//Inleder sidan
+renderDesserts(database);
+setAddDessertHandler();
+setFilterDessertHandlers();
