@@ -8,7 +8,7 @@ body {
     text-align: center;
   }
   
-  #add-dog-form {
+  #add-dessert-form {
     display: grid;
     grid-template-columns: 1fr 1fr 100px 60px;
     gap: 10px;
@@ -24,8 +24,10 @@ body {
     gap: 15px;
   }
   
-  #filter-by-breed,
-  #filter-by-age {
+  #filter-by-flavor,
+  #filter-by-kalories,
+  #fileter-by-shape,
+  #filter-by-glutenfree {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 5px;
@@ -39,23 +41,23 @@ body {
     grid-template-columns: repeat(4, 1fr);
   }
   
-  #dogs {
+  #desserts {
     background: beige;
     padding: 10px;
   }
   
-  .dog {
+  .dessert {
     padding: 10px 10px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
   }
   
-  .dog div {
+  .dessert div {
     /* Center vertically */
     display: flex;
     align-items: center;
   }
   
-  .dog:nth-child(odd) {
+  .dessert:nth-child(odd) {
     background: #fffff0;
   }
