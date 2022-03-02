@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 let database = [
     {
         id: 1,
@@ -25,7 +25,7 @@ let database = [
         kalories: 278,
         shape: "Round",
         glutenfree: "Yes"
-    }
+    },
 
     {
         id: 4,
@@ -34,7 +34,7 @@ let database = [
         kalories: 354,
         shape: "Round",
         glutenfree: "Yes"
-    }
+    },
 
     {
         id: 5,
@@ -43,7 +43,7 @@ let database = [
         kalories: 1720,
         shape: "Round",
         glutenfree: "No"
-    }
+    },
 
     {
         id: 6,
@@ -52,7 +52,7 @@ let database = [
         kalories: 286,
         shape: "Round",
         glutenfree: "No"
-    }
+    },
 
     {
         id: 7,
@@ -61,7 +61,7 @@ let database = [
         kalories: 130,
         shape: "Round",
         glutenfree: "No"
-    }
+    },
 
     {
         id: 8,
@@ -70,7 +70,7 @@ let database = [
         kalories: 683,
         shape: "Squere",
         glutenfree: "No"
-    }
+    },
 
     {
         id: 9,
@@ -79,7 +79,7 @@ let database = [
         kalories: 234,
         shape: "Squere",
         glutenfree: "No"
-    }
+    },
     {
         id: 10,
         name: "Banoffie",
