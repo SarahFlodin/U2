@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="add-dessert-form">
+        <input id= "dessert" type="text" placeholder="Dessert">
+        <input id= "dessert" type="text" placeholder="Flavor">
+        <input id= "dessert" type="text" placeholder="Kalories">
+        <input id= "dessert" type="text" placeholder="Shape">
+        <input id= "dessert" type="text" placeholder="Glutenfree">
+        <button>Add</button>
+    </form>
+
+    <div id="filters"> 
+        <form id="filters">
+            <input id="filter-flavor" type="text" placeholder="Filter by flavor">
+            <button>Filter</button>
+        </form>
+
+        <form id="filters">
+            <input id="filter-kalories" type="number" placeholder="Filter by kalories">
+            <button>Filter</button>
+        </form>
+
+        <form id="filters">
+            <input id="filter-shape" type="text" placeholder="Filter by shape">
+            <button>Filter</button>
+        </form>
+
+        <form id="filters">
+            <input id="filter-glutenfree" type="text" placeholder="Filter by glutenfree">
+            <button>Filter</button>
+        </form>
+    </div>
+
+    <div id="headers">
+        <div>Dessert</div>
+        <div>Flavor</div>
+        <div>Kalories</div>
+        <div>Shape</div>
+        <div>Glutenfree</div>
+    </div>
+
+//Lista för varje dessert, nummer
+<ol type="1" id="desserts"></ol>
+
+<script src="database.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
