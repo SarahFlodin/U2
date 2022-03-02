@@ -7,7 +7,7 @@ let database = [
         kalories: 1520,
         shape: "Round",
         glutenfree: "No"
-    }
+    },
 
     {
         id: 2,
@@ -16,7 +16,7 @@ let database = [
         kalories: 500,
         shape: "Round",
         glutenfree: "No"
-    }
+    },
 
     {
         id: 3,
