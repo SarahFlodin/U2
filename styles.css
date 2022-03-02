@@ -34,21 +34,23 @@ body {
     margin-bottom: 15px;
     padding-bottom: 15px;
     border-bottom: 4px dotted blue;
+    margin-left: 15px;
   }
   
   #filters {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     margin-bottom: 15px;
-    gap: 8.3px;
   }
   
   #filter-by-flavor,
   #filter-by-kalories,
-  #fileter-by-shape,
+  #filter-by-shape,
   #filter-by-glutenfree {
     display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 5px;
+    margin-left: 15px;
   }
   
   #headers {
@@ -78,6 +80,12 @@ body {
   .dessert:nth-child(odd) {
     background: rgb(187, 255, 187);
   }
+
   .dessert:nth-child(even) {
     background: rgb(221, 192, 248);
+  }
+
+  #filters button,
+  #add-dessert-form button {
+    width: 45px;
   }

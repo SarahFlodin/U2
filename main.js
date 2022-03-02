@@ -26,7 +26,7 @@ function removeDessertbyId(desserts, id) {
         // kollar om dessertens namn matchar med namnet
         if (dessert.id == id) {
             // If stämmer, tas desserten bort
-            dessert.splice(i, 1)
+            desserts.splice(i, 1)
             return;
         }
     }
@@ -36,7 +36,7 @@ function removeDessertbyId(desserts, id) {
 function getDessertsByFlavor (desserts, flavor) {
     let dessertsByFlavor = [];
 //Skapar en if loop så det inte spelar roll om små eller stora bokstäver används och matchar med smaken
-    for (let desserts of dessert) {
+    for (let dessert of desserts) {
         if (dessert.flavor.toLowerCase() == flavor.toLowerCase()) {
             dessertsByFlavor.push(dessert);
         }
@@ -48,7 +48,7 @@ function getDessertsByFlavor (desserts, flavor) {
 function getDessertsByKalories (desserts, kalories) {
     let dessertsByKalories = [];
 //Skapar en if loop så det inte spelar roll om små eller stora bokstäver används och matchar med smaken
-    for (let desserts of dessert) {
+    for (let dessert of desserts) {
         if (dessert.kalories == kalories) {
             dessertsByKalories.push(dessert);
         }
@@ -60,8 +60,8 @@ function getDessertsByKalories (desserts, kalories) {
 function getDessertsByShape (desserts, shape) {
     let dessertsByShape = [];
 //Skapar en if loop så det inte spelar roll om små eller stora bokstäver används och matchar med smaken
-    for (let desserts of dessert) {
-        if (dessert.shape.toLowerCase() == flavor.toLowerCase()) {
+    for (let dessert of desserts) {
+        if (dessert.shape.toLowerCase() == shape.toLowerCase()) {
             dessertsByShape.push(dessert);
         }
     }
@@ -69,10 +69,10 @@ function getDessertsByShape (desserts, shape) {
 }
 
 // Returnerar desserten baserat på om dem är glutenfria
-function getDessertsByFlavor (desserts, glutenfree) {
+function getDessertsByGlutenfree (desserts, glutenfree) {
     let dessertsByGlutenfree = [];
 //Skapar en if loop så det inte spelar roll om små eller stora bokstäver används och matchar med smaken
-    for (let desserts of dessert) {
+    for (let dessert of desserts) {
         if (dessert.glutenfree.toLowerCase() == glutenfree.toLowerCase()) {
             dessertsByGlutenfree.push(dessert);
         }
@@ -91,7 +91,7 @@ function renderDessert(dessert) {
         <div>${dessert.kalories}</div>
         <div>${dessert.shape}</div>
         <div>${dessert.glutenfree}</div>
-        <button type="button"> Remove </button>
+        <button type="button">Remove</button>
         `;
 
     return div;
@@ -151,7 +151,7 @@ function onAddDessertSubmit(event) {
 }
 
 // Lägger till "click" eventet till knappen
-function setAddDessertClick(event) {
+function setAddDessertHandler() {
     let form = document.getElementById("add-dessert-form");
     form.addEventListener("submit", onAddDessertSubmit);
 }
@@ -163,7 +163,7 @@ function onRemoveDessertClick(event) {
 
     // Använder globala variabeln "database" och konfimerar att jag ska ta bort
     if (window.confirm("Do you really want to remove this dessert?")) {
-        removeDesserts(database);
+        removeDessertbyId(database, id);
     }
 
     // Återskapar sidan utan den borttagna desserten
@@ -193,8 +193,8 @@ function onFilterByFlavorSubmit (event) {
 //Filtrera desserter genom kalorier
 function onFilterByKaloriesSubmit (event) {
     event.preventDefault();
-    // Hur många kalorier
-    let kalories = document.getElementById("filter-kalorier").value;
+    // Hur många kalorier?
+    let kalories = document.getElementById("filter-kalories").value;
     // Hämta desserter genom smak
     let desserts = getDessertsByKalories(database, kalories);
     //Återskapa desserterna
@@ -206,7 +206,7 @@ function onFilterByShapesSubmit (event) {
     // Vilken form?
     let shape = document.getElementById("filter-shape").value;
     // Hämta desserter genom smak
-    let desserts = getDessertsByFlavor(database, shape);
+    let desserts = getDessertsByShape(database, shape);
     //Återskapa desserterna
     renderDesserts(desserts);
 }
@@ -237,12 +237,13 @@ function setFilterDessertHandlers() {
     let shapeForm = document.getElementById("filter-by-shape");
     let glutenfreeForm = document.getElementById("filter-by-glutenfree");
     let showAll = document.getElementById("show-all");
+
 // Det som ska hända när man submittar värdet
     flavorForm.addEventListener("submit", onFilterByFlavorSubmit);
     kaloriesForm.addEventListener("submit", onFilterByKaloriesSubmit);
     shapeForm.addEventListener("submit", onFilterByShapesSubmit);
     glutenfreeForm.addEventListener("submit", onFilterByGlutenfreeSubmit);
-    showAll.addEventListener("submit", onShowAllClick);
+    showAll.addEventListener("click", onShowAllClick);
 }
 
 //Inleder sidan
