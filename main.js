@@ -86,7 +86,7 @@ function renderDessert(dessert) {
     div.classList.add("dessert");
     div.id = dessert.id;
     div.innerHTML = `
-        <div>${dessert.name}</div>
+        <li> <div>${dessert.name}</div> </li>
         <div>${dessert.flavor}</div>
         <div>${dessert.kalories}</div>
         <div>${dessert.shape}</div>
