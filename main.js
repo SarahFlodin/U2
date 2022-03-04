@@ -138,8 +138,12 @@ function onAddDessertSubmit(event) {
 
     let dessert = createNewDessert(name, flavor, kalories, shape, glutenfree);
     //Kalkulera nya id:t till desserten
-    dessert.id = database[database.length - 1].id + 1;
-
+    if (database.length = database.length) {
+        dessert.id = database[database.length - 1].id + 1;
+    }else {
+        dessert.id =1;
+    }
+    
     addDessertToDatabase(database, dessert)
     renderDesserts(database);
 
